@@ -1,4 +1,9 @@
+<p align="center">
+  <img src="https://github.com/ksolheim/passhammer/assets/10515447/0e41f4ec-efca-4cf1-9719-1fa368abf7cf" />
+</p>
+
 # Passhammer
+
 
 A Python application to assist in finding available appointments for passport and ID services at Norwegian police stations.
 

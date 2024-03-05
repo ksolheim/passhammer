@@ -6,7 +6,7 @@ import datetime as dt
 import webbrowser
 
 # setup database
-conn = sqlite3.connect('json/offices.db')
+conn = sqlite3.connect('data/offices.db')
 c = conn.cursor()
 
 # dict to hold branch and branch_public_id

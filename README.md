@@ -30,7 +30,10 @@ A Python application to assist in finding available appointments for passport an
 2. Navigate to the project directory.
 3. Run the script: `python passhammer.py` (assuming your main script is named 'passhammer.py')
 
-Alternatively download the exe from [Releases](https://github.com/ksolheim/passhammer/releases)
+**Alternative EXE** 
+1. Download the the latest [release.](https://github.com/ksolheim/passhammer/releases)
+2. Extract the files and folder.
+3. Run passhammer.exe
 
 ## Usage
 

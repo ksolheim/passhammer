@@ -30,6 +30,8 @@ A Python application to assist in finding available appointments for passport an
 2. Navigate to the project directory.
 3. Run the script: `python passhammer.py` (assuming your main script is named 'passhammer.py')
 
+Alternatively download the exe from [Releases](https://github.com/ksolheim/passhammer/releases)
+
 ## Usage
 
 1. **Select Branches:** Choose the desired police branches from the list. You can chose multiple branches by using CTRL.

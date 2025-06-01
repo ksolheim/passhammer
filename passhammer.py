@@ -66,8 +66,44 @@ def on_submit():
                 current_branch_and_date = response.json()
                 # if current_branch_and_date > 0 alert the user and ask if they want to open the url
                 if len(current_branch_and_date) > 0:
-                    if messagebox.askyesno('Alert', f'Found available time at {branch_name} on {date}.\n\nDo you want to open the url?'):
+                    root.bell()
+                    root.lift()
+                    root.focus_force()
+                    
+                    # new dialog window instead of messagebox
+                    dialog = tk.Toplevel(root)
+                    dialog.title("Alert")
+                    dialog.geometry("300x150")
+                    dialog.attributes('-topmost', True)  
+                    dialog.transient(root)  
+                    dialog.grab_set()  
+                    
+                    # center dialog on screen
+                    dialog.update_idletasks()
+                    screen_width = dialog.winfo_screenwidth()
+                    screen_height = dialog.winfo_screenheight()
+                    x = (screen_width - dialog.winfo_width()) // 2
+                    y = (screen_height - dialog.winfo_height()) // 2
+                    dialog.geometry(f"+{x}+{y}")
+                    
+                    label = tk.Label(dialog, text=f'Found available time at {branch_name} on {date}.', wraplength=250)
+                    label.pack(pady=10)
+                    
+                    def open_url():
                         webbrowser.open(f'https://pass-og-id.politiet.no/timebestilling/index.html#/preselect/branch/{branch_id}?preselectFilters=off')
+                        dialog.destroy()
+                    
+                    def close_dialog():
+                        dialog.destroy()
+                    
+                    button_frame = tk.Frame(dialog)
+                    button_frame.pack(pady=10)
+                    
+                    yes_button = tk.Button(button_frame, text="Open URL", command=open_url)
+                    yes_button.pack(side=tk.LEFT, padx=5)
+                    
+                    no_button = tk.Button(button_frame, text="Close", command=close_dialog)
+                    no_button.pack(side=tk.LEFT, padx=5)
         root.after(int(check_interval_entry.get()) * 60 * 1000, check_urls)
     check_urls()
 
@@ -78,7 +114,7 @@ root.geometry('400x600')
 
 # Branches Listbox
 branch_var = tk.StringVar()
-branch_listbox = tk.Listbox(root, listvariable=branch_var, selectmode=tk.EXTENDED)
+branch_listbox = tk.Listbox(root, listvariable=branch_var, selectmode=tk.EXTENDED, exportselection=False)
 branch_listbox.pack(fill=tk.BOTH, expand=True, pady=5, padx=10)
 
 scrollbar = tk.Scrollbar(branch_listbox, orient=tk.VERTICAL)
